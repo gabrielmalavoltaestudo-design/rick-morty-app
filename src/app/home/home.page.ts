@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular/standalone';
+import { RickMortyService } from '../core/services/rick-morty';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,17 @@ import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular/stan
   styleUrls: ['home.page.scss'],
   imports: [IonHeader, IonToolbar, IonTitle, IonContent],
 })
-export class HomePage {
-  constructor() {}
+
+
+export class HomePage implements OnInit {
+  public characters: any[] = []
+
+  constructor(private rickMortyService: RickMortyService) {}
+
+  ngOnInit() {
+    this.rickMortyService.getCharacters().subscribe((data: any) => {
+      this.characters = data.results; 
+      console.log('Personagens salvos:', this.characters);
+    });
+  }
 }
