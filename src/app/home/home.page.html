@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Hello World
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,12 +9,28 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Personagens</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-grid>
+    <ion-row>
+      @for (p of characters; track p.id) {
+        <ion-col size="6" size-md="4" size-lg="3">
+          <ion-card class="character-card">
+            <img [src]="p.image" [alt]="p.name" />
+            <ion-card-header>
+              <ion-card-title class="ion-text-nowrap">{{ p.name }}</ion-card-title>
+              <ion-card-subtitle>{{ p.species }} - {{ p.status }}</ion-card-subtitle>
+            </ion-card-header>
+          </ion-card>
+        </ion-col>
+      } @empty {
+    <div class="ion-text-center ion-padding">
+      <p>Nenhum personagem encontrado.</p>
+    </div>
+  }
+    </ion-row>
+  </ion-grid>
+   
 </ion-content>

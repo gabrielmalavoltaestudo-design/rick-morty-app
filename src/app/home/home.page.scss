@@ -25,3 +25,26 @@
 #container a {
   text-decoration: none;
 }
+
+.character-card {
+  margin: 0;
+  height: 100%; // Garante que todos os cards na mesma linha tenham a mesma altura
+  display: flex;
+  flex-direction: column;
+  box-shadow: none; // Design mais flat e moderno
+  border: 1px solid var(--ion-color-light-shade);
+
+  img {
+    height: 150px;
+    object-fit: cover; // Não distorce a imagem do personagem
+  }
+
+  ion-card-title {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+}
+
+ion-col {
+  padding: 8px; // Espaçamento entre os cartões
+}
