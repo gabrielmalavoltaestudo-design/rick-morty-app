@@ -6,9 +6,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class RickMortyService {
+  private readonly API_URL = 'https://rickandmortyapi.com/api';
+
   constructor(private http: HttpClient) {}
 
-  getCharacters(): Observable<any> {
-    return this.http.get('https://rickandmortyapi.com/api/character');
+  getCharacters(page: number = 1): Observable<any> {
+    return this.http.get(`${this.API_URL}/character/?page=${page}`);
   }
 }
